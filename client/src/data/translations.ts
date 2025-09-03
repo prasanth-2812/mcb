@@ -4,17 +4,17 @@ export const translations = {
     nav: {
       home: "Home",
       jobs: "Jobs",
-      services: "Services",
+      internships: "Internships",
       about: "About",
       contact: "Contact",
-      signIn: "Sign In",
+      signIn: "Login",
       postJob: "Post Job",
     },
     
     // Hero Section
     hero: {
-      title: "Find Your Dream Job with MCB Consulting",
-      subtitle: "Leading recruitment consultancy connecting talented professionals with top companies across India. Your career success is our mission.",
+      title: "Find Your Perfect Gig in India",
+      subtitle: "Flexible work opportunities connecting talented professionals with top companies across India. Your career success is our mission.",
       searchPlaceholder: "e.g. Software Engineer, Marketing Manager",
       locationPlaceholder: "City, State",
       searchButton: "Search Jobs",
@@ -169,16 +169,16 @@ export const translations = {
     nav: {
       home: "होम",
       jobs: "नौकरियाँ",
-      services: "सेवाएं",
+      internships: "इंटर्नशिप",
       about: "हमारे बारे में",
       contact: "संपर्क",
-      signIn: "साइन इन",
+      signIn: "लॉगिन",
       postJob: "नौकरी पोस्ट करें",
     },
     
     hero: {
-      title: "MCB कंसल्टिंग के साथ अपना सपनों का करियर पाएं",
-      subtitle: "भारत में प्रतिभाशाली पेशेवरों को शीर्ष कंपनियों से जोड़ने वाली अग्रणी रिक्रूटमेंट कंसल्टेंसी। आपकी करियर सफलता हमारा मिशन है।",
+      title: "भारत में अपना परफेक्ट गिग खोजें",
+      subtitle: "लचीले काम के अवसर जो प्रतिभाशाली पेशेवरों को भारत की शीर्ष कंपनियों से जोड़ते हैं। आपकी करियर सफलता हमारा मिशन है।",
       searchPlaceholder: "जैसे सॉफ्टवेयर इंजीनियर, मार्केटिंग मैनेजर",
       locationPlaceholder: "शहर, राज्य",
       searchButton: "नौकरी खोजें",
