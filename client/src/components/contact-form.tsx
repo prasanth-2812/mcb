@@ -86,8 +86,8 @@ export function ContactForm() {
   ];
 
   return (
-    <Card className="p-8">
-      <h3 className="text-2xl font-semibold text-foreground mb-6" data-testid="contact-form-title">
+    <Card className="p-8 shadow-2xl border-0 bg-white/95 backdrop-blur-sm">
+      <h3 className="text-2xl font-semibold text-gray-900 mb-6" data-testid="contact-form-title">
         {t("contact.sendMessage")}
       </h3>
       
@@ -99,13 +99,13 @@ export function ContactForm() {
               name="firstName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="form-label">
+                  <FormLabel className="text-sm font-medium text-gray-700">
                     {t("contact.form.firstName")} *
                   </FormLabel>
                   <FormControl>
                     <Input 
                       {...field} 
-                      className="form-input"
+                      className="h-12 border-2 border-gray-200 focus:border-[#0066CC] focus:ring-[#0066CC]/20 transition-all duration-300 rounded-xl"
                       data-testid="contact-first-name"
                     />
                   </FormControl>
@@ -119,13 +119,13 @@ export function ContactForm() {
               name="lastName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="form-label">
+                  <FormLabel className="text-sm font-medium text-gray-700">
                     {t("contact.form.lastName")} *
                   </FormLabel>
                   <FormControl>
                     <Input 
                       {...field} 
-                      className="form-input"
+                      className="h-12 border-2 border-gray-200 focus:border-[#0066CC] focus:ring-[#0066CC]/20 transition-all duration-300 rounded-xl"
                       data-testid="contact-last-name"
                     />
                   </FormControl>
@@ -140,14 +140,14 @@ export function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="form-label">
+                <FormLabel className="text-sm font-medium text-gray-700">
                   {t("contact.form.email")} *
                 </FormLabel>
                 <FormControl>
                   <Input 
                     type="email" 
                     {...field} 
-                    className="form-input"
+                    className="h-12 border-2 border-gray-200 focus:border-[#0066CC] focus:ring-[#0066CC]/20 transition-all duration-300 rounded-xl"
                     data-testid="contact-email"
                   />
                 </FormControl>
@@ -161,7 +161,7 @@ export function ContactForm() {
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="form-label">
+                <FormLabel className="text-sm font-medium text-gray-700">
                   {t("contact.form.phone")}
                 </FormLabel>
                 <FormControl>
@@ -172,7 +172,7 @@ export function ContactForm() {
                     onBlur={field.onBlur}
                     name={field.name}
                     ref={field.ref}
-                    className="form-input"
+                    className="h-12 border-2 border-gray-200 focus:border-[#0066CC] focus:ring-[#0066CC]/20 transition-all duration-300 rounded-xl"
                     data-testid="contact-phone"
                   />
                 </FormControl>

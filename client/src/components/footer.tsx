@@ -1,15 +1,37 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { useTranslation } from "@/hooks/use-translation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Briefcase, Send, Linkedin, Twitter, Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
+import { Send, Linkedin, Twitter, Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
 
 export function Footer() {
   const { t } = useTranslation();
+  const [, setLocation] = useLocation();
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: Implement newsletter subscription
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigation = (path: string) => {
+    setLocation(path);
+    scrollToTop();
+  };
+
+  const handleSocialClick = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handlePhoneClick = () => {
+    window.open('tel:+912212345678', '_self');
+  };
+
+  const handleEmailClick = () => {
+    window.open('mailto:info@mcbconsulting.com', '_self');
   };
 
   return (
@@ -18,9 +40,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Information */}
           <div className="space-y-4">
-            <div className="text-2xl font-bold text-primary flex items-center">
-              <Briefcase className="h-6 w-6 mr-2" />
-              MCB Consulting
+            <div className="flex items-center">
+              <img 
+                src="/mcb.svg" 
+                alt="MCB Consulting" 
+                className="h-12 w-auto max-w-48"
+              />
             </div>
             <p className="text-gray-300 leading-relaxed">
               {t("footer.description")}
@@ -31,6 +56,7 @@ export function Footer() {
                 size="icon"
                 className="text-gray-400 hover:text-primary transition-colors"
                 data-testid="social-linkedin"
+                onClick={() => handleSocialClick('https://linkedin.com/company/mcb-consulting')}
               >
                 <Linkedin className="h-5 w-5" />
               </Button>
@@ -39,6 +65,7 @@ export function Footer() {
                 size="icon"
                 className="text-gray-400 hover:text-primary transition-colors"
                 data-testid="social-twitter"
+                onClick={() => handleSocialClick('https://twitter.com/mcbconsulting')}
               >
                 <Twitter className="h-5 w-5" />
               </Button>
@@ -47,6 +74,7 @@ export function Footer() {
                 size="icon"
                 className="text-gray-400 hover:text-primary transition-colors"
                 data-testid="social-facebook"
+                onClick={() => handleSocialClick('https://facebook.com/mcbconsulting')}
               >
                 <Facebook className="h-5 w-5" />
               </Button>
@@ -55,6 +83,7 @@ export function Footer() {
                 size="icon"
                 className="text-gray-400 hover:text-primary transition-colors"
                 data-testid="social-instagram"
+                onClick={() => handleSocialClick('https://instagram.com/mcbconsulting')}
               >
                 <Instagram className="h-5 w-5" />
               </Button>
@@ -68,40 +97,40 @@ export function Footer() {
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link 
-                  href="/" 
-                  className="text-gray-300 hover:text-primary transition-colors"
+                <button 
+                  onClick={() => handleNavigation('/')}
+                  className="text-gray-300 hover:text-primary transition-colors text-left"
                   data-testid="footer-link-home"
                 >
                   {t("nav.home")}
-                </Link>
+                </button>
               </li>
               <li>
-                <Link 
-                  href="/jobs" 
-                  className="text-gray-300 hover:text-primary transition-colors"
+                <button 
+                  onClick={() => handleNavigation('/jobs')}
+                  className="text-gray-300 hover:text-primary transition-colors text-left"
                   data-testid="footer-link-jobs"
                 >
                   {t("nav.jobs")}
-                </Link>
+                </button>
               </li>
               <li>
-                <Link 
-                  href="/about" 
-                  className="text-gray-300 hover:text-primary transition-colors"
+                <button 
+                  onClick={() => handleNavigation('/about')}
+                  className="text-gray-300 hover:text-primary transition-colors text-left"
                   data-testid="footer-link-about"
                 >
                   {t("nav.about")}
-                </Link>
+                </button>
               </li>
               <li>
-                <Link 
-                  href="/contact" 
-                  className="text-gray-300 hover:text-primary transition-colors"
+                <button 
+                  onClick={() => handleNavigation('/contact')}
+                  className="text-gray-300 hover:text-primary transition-colors text-left"
                   data-testid="footer-link-contact"
                 >
                   {t("nav.contact")}
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
@@ -113,40 +142,40 @@ export function Footer() {
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link 
-                  href="/jobs?category=it" 
-                  className="text-gray-300 hover:text-primary transition-colors"
+                <button 
+                  onClick={() => handleNavigation('/jobs?category=it')}
+                  className="text-gray-300 hover:text-primary transition-colors text-left"
                   data-testid="footer-category-it"
                 >
                   Information Technology
-                </Link>
+                </button>
               </li>
               <li>
-                <Link 
-                  href="/jobs?category=finance" 
-                  className="text-gray-300 hover:text-primary transition-colors"
+                <button 
+                  onClick={() => handleNavigation('/jobs?category=finance')}
+                  className="text-gray-300 hover:text-primary transition-colors text-left"
                   data-testid="footer-category-finance"
                 >
                   Finance & Banking
-                </Link>
+                </button>
               </li>
               <li>
-                <Link 
-                  href="/jobs?category=healthcare" 
-                  className="text-gray-300 hover:text-primary transition-colors"
+                <button 
+                  onClick={() => handleNavigation('/jobs?category=healthcare')}
+                  className="text-gray-300 hover:text-primary transition-colors text-left"
                   data-testid="footer-category-healthcare"
                 >
                   Healthcare
-                </Link>
+                </button>
               </li>
               <li>
-                <Link 
-                  href="/jobs?category=engineering" 
-                  className="text-gray-300 hover:text-primary transition-colors"
+                <button 
+                  onClick={() => handleNavigation('/jobs?category=engineering')}
+                  className="text-gray-300 hover:text-primary transition-colors text-left"
                   data-testid="footer-category-engineering"
                 >
                   Engineering
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
@@ -180,14 +209,20 @@ export function Footer() {
               </div>
 
               <div className="text-gray-300 text-sm space-y-1">
-                <p className="flex items-center">
+                <button 
+                  onClick={handlePhoneClick}
+                  className="flex items-center hover:text-primary transition-colors"
+                >
                   <Phone className="h-4 w-4 mr-2" />
                   +91 22 1234 5678
-                </p>
-                <p className="flex items-center">
+                </button>
+                <button 
+                  onClick={handleEmailClick}
+                  className="flex items-center hover:text-primary transition-colors"
+                >
                   <Mail className="h-4 w-4 mr-2" />
                   info@mcbconsulting.com
-                </p>
+                </button>
                 <p className="flex items-center">
                   <MapPin className="h-4 w-4 mr-2" />
                   Mumbai, Maharashtra
@@ -204,27 +239,27 @@ export function Footer() {
               <p>{t("footer.copyright")}</p>
             </div>
             <div className="flex space-x-6 text-sm">
-              <Link 
-                href="/privacy" 
+              <button 
+                onClick={() => handleNavigation('/privacy')}
                 className="text-gray-400 hover:text-primary transition-colors"
                 data-testid="footer-privacy"
               >
                 {t("footer.privacyPolicy")}
-              </Link>
-              <Link 
-                href="/terms" 
+              </button>
+              <button 
+                onClick={() => handleNavigation('/terms')}
                 className="text-gray-400 hover:text-primary transition-colors"
                 data-testid="footer-terms"
               >
                 {t("footer.termsOfService")}
-              </Link>
-              <Link 
-                href="/cookies" 
+              </button>
+              <button 
+                onClick={() => handleNavigation('/cookies')}
                 className="text-gray-400 hover:text-primary transition-colors"
                 data-testid="footer-cookies"
               >
                 {t("footer.cookiePolicy")}
-              </Link>
+              </button>
             </div>
           </div>
         </div>

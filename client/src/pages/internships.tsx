@@ -5,13 +5,14 @@ import { SEOHead } from "@/components/seo-head";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { JobCard } from "@/components/job-card";
+import { JobCardCompact } from "@/components/job-card-compact";
 import { useTranslation } from "@/hooks/use-translation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Search, MapPin, Briefcase, Filter, SlidersHorizontal } from "lucide-react";
+import { Search, MapPin, Briefcase, Filter, SlidersHorizontal, Grid3X3, List } from "lucide-react";
 import { Job } from "@shared/schema";
 
 export default function Internships() {
@@ -32,6 +33,7 @@ export default function Internships() {
 
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
   const jobsPerPage = 10;
 
   // Build query parameters for API call
@@ -118,17 +120,25 @@ export default function Internships() {
         keywords="internships, career, employment, recruitment, internship search, India, IT internships, finance internships"
       />
       
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50/30 via-white to-blue-50/30">
         <Header />
         
         {/* Page Header */}
-        <section className="bg-muted py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-8">
-              <h1 className="text-4xl font-bold text-foreground mb-4" data-testid="internships-page-title">
+        <section className="relative bg-gradient-to-r from-[#0066CC] via-[#0052A3] to-[#003D7A] py-20 overflow-hidden">
+          {/* Background Elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full animate-float"></div>
+            <div className="absolute bottom-10 right-10 w-24 h-24 bg-yellow-300/20 rounded-full animate-float-delayed"></div>
+            <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/5 rounded-full animate-pulse-slow"></div>
+            <div className="absolute top-1/3 right-1/3 w-20 h-20 bg-yellow-300/15 rounded-full animate-bounce-slow"></div>
+          </div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-8 animate-fade-in-up">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight" data-testid="internships-page-title">
                 Find Your Perfect Internship
               </h1>
-              <p className="text-xl text-muted-foreground" data-testid="internships-page-subtitle">
+              <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed" data-testid="internships-page-subtitle">
                 Discover hands-on learning opportunities that match your skills and career goals
               </p>
             </div>
@@ -136,29 +146,29 @@ export default function Internships() {
         </section>
 
         {/* Search and Filters */}
-        <section className="py-8 bg-background">
+        <section className="py-12 -mt-8 relative z-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Card className="p-6 mb-8">
+            <Card className="p-8 mb-12 shadow-2xl border-0 bg-white/95 backdrop-blur-sm animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               {/* Main Search Bar */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+                <div className="relative group">
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 group-focus-within:text-[#0066CC] transition-colors" />
                   <Input
                     placeholder="Internship title, keywords, or company"
                     value={filters.search}
                     onChange={(e) => updateFilters({ search: e.target.value })}
-                    className="pl-10"
+                    className="pl-12 h-14 text-lg border-2 border-gray-200 focus:border-[#0066CC] focus:ring-[#0066CC]/20 transition-all duration-300 rounded-xl"
                     data-testid="internship-search-input"
                   />
                 </div>
                 
-                <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                <div className="relative group">
+                  <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 group-focus-within:text-[#0066CC] transition-colors" />
                   <Input
                     placeholder="Location"
                     value={filters.location}
                     onChange={(e) => updateFilters({ location: e.target.value })}
-                    className="pl-10"
+                    className="pl-12 h-14 text-lg border-2 border-gray-200 focus:border-[#0066CC] focus:ring-[#0066CC]/20 transition-all duration-300 rounded-xl"
                     data-testid="internship-location-input"
                   />
                 </div>
@@ -167,9 +177,9 @@ export default function Internships() {
                   value={filters.category} 
                   onValueChange={(value) => updateFilters({ category: value })}
                 >
-                  <SelectTrigger data-testid="internship-category-select">
+                  <SelectTrigger className="h-14 text-lg border-2 border-gray-200 focus:border-[#0066CC] focus:ring-[#0066CC]/20 transition-all duration-300 rounded-xl" data-testid="internship-category-select">
                     <div className="flex items-center">
-                      <Briefcase className="h-4 w-4 mr-2 text-muted-foreground" />
+                      <Briefcase className="h-5 w-5 mr-3 text-muted-foreground" />
                       <SelectValue placeholder="All Categories" />
                     </div>
                   </SelectTrigger>
@@ -186,22 +196,22 @@ export default function Internships() {
                 <Button 
                   onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
                   variant="outline"
-                  className="flex items-center space-x-2"
+                  className="h-14 text-lg border-2 border-gray-200 hover:border-[#0066CC] hover:bg-[#0066CC]/5 transition-all duration-300 rounded-xl flex items-center space-x-3"
                   data-testid="advanced-filters-toggle"
                 >
-                  <SlidersHorizontal className="h-4 w-4" />
-                  <span>Filters</span>
+                  <SlidersHorizontal className="h-5 w-5" />
+                  <span>Advanced Filters</span>
                 </Button>
               </div>
 
               {/* Advanced Filters */}
               {showAdvancedFilters && (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-border">
-                  <div className="flex space-x-2">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-gray-200 animate-fade-in-up">
+                  <div className="flex space-x-3">
                     <Button 
                       onClick={clearFilters}
                       variant="outline"
-                      className="flex-1"
+                      className="flex-1 h-12 border-2 border-gray-200 hover:border-[#0066CC] hover:bg-[#0066CC]/5 hover:text-[#0066CC] transition-all duration-300 rounded-xl"
                       data-testid="clear-filters-button"
                     >
                       Clear All
@@ -212,83 +222,141 @@ export default function Internships() {
             </Card>
 
             {/* Results Header */}
-            <div className="flex justify-between items-center mb-6">
-              <div className="text-muted-foreground" data-testid="internships-count">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+              <div className="text-lg font-semibold text-gray-700" data-testid="internships-count">
                 {isLoading ? (
-                  <Skeleton className="h-5 w-32" />
+                  <Skeleton className="h-6 w-40" />
                 ) : (
-                  `${totalJobs} internships found`
+                  <span className="flex items-center">
+                    <span className="text-[#0066CC] font-bold">{totalJobs}</span>
+                    <span className="ml-2">internships found</span>
+                  </span>
                 )}
               </div>
               
-              <Select defaultValue="newest">
-                <SelectTrigger className="w-48" data-testid="sort-select">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="newest">Newest First</SelectItem>
-                  <SelectItem value="oldest">Oldest First</SelectItem>
-                </SelectContent>
-              </Select>
+              <div className="flex items-center space-x-4">
+                {/* View Toggle */}
+                <div className="flex items-center bg-gray-100 rounded-xl p-1">
+                  <Button
+                    variant={viewMode === 'list' ? 'default' : 'ghost'}
+                    size="sm"
+                    onClick={() => setViewMode('list')}
+                    className={`px-3 py-2 rounded-lg transition-all duration-300 ${
+                      viewMode === 'list' 
+                        ? 'bg-white shadow-sm text-[#0066CC]' 
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    <List className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant={viewMode === 'grid' ? 'default' : 'ghost'}
+                    size="sm"
+                    onClick={() => setViewMode('grid')}
+                    className={`px-3 py-2 rounded-lg transition-all duration-300 ${
+                      viewMode === 'grid' 
+                        ? 'bg-white shadow-sm text-[#0066CC]' 
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    <Grid3X3 className="h-4 w-4" />
+                  </Button>
+                </div>
+
+                <Select defaultValue="newest">
+                  <SelectTrigger className="w-56 h-12 border-2 border-gray-200 focus:border-[#0066CC] focus:ring-[#0066CC]/20 transition-all duration-300 rounded-xl" data-testid="sort-select">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="newest">Newest First</SelectItem>
+                    <SelectItem value="oldest">Oldest First</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
 
             {/* Job Listings */}
             {isLoading ? (
-              <div className="space-y-6" data-testid="internships-loading">
+              <div className="space-y-8" data-testid="internships-loading">
                 {[...Array(5)].map((_, i) => (
-                  <Card key={i} className="p-6">
-                    <Skeleton className="h-6 w-64 mb-2" />
-                    <Skeleton className="h-4 w-48 mb-4" />
-                    <Skeleton className="h-16 w-full mb-4" />
-                    <div className="flex space-x-4">
-                      <Skeleton className="h-4 w-24" />
-                      <Skeleton className="h-4 w-20" />
-                      <Skeleton className="h-4 w-28" />
+                  <Card key={i} className="p-8 shadow-lg border-0 bg-white/80 backdrop-blur-sm animate-pulse">
+                    <div className="flex items-start space-x-4">
+                      <Skeleton className="h-16 w-16 rounded-xl" />
+                      <div className="flex-1 space-y-3">
+                        <Skeleton className="h-6 w-64" />
+                        <Skeleton className="h-4 w-48" />
+                        <Skeleton className="h-16 w-full" />
+                        <div className="flex space-x-4">
+                          <Skeleton className="h-4 w-24" />
+                          <Skeleton className="h-4 w-20" />
+                          <Skeleton className="h-4 w-28" />
+                        </div>
+                      </div>
                     </div>
                   </Card>
                 ))}
               </div>
             ) : error ? (
-              <Card className="p-12 text-center" data-testid="internships-error">
-                <div className="text-destructive mb-4">
-                  <Filter className="h-12 w-12 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold">Error Loading Internships</h3>
+              <Card className="p-16 text-center shadow-2xl border-0 bg-white/80 backdrop-blur-sm animate-fade-in-up" data-testid="internships-error">
+                <div className="text-red-500 mb-6">
+                  <Filter className="h-16 w-16 mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold">Error Loading Internships</h3>
                 </div>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-gray-600 mb-8 text-lg">
                   We couldn't load the internship listings. Please try again.
                 </p>
-                <Button onClick={() => window.location.reload()}>
+                <Button 
+                  onClick={() => window.location.reload()}
+                  className="px-8 py-3 text-lg bg-[#0066CC] hover:bg-[#0052A3] transition-all duration-300 rounded-xl"
+                >
                   Try Again
                 </Button>
               </Card>
             ) : currentJobs.length === 0 ? (
-              <Card className="p-12 text-center" data-testid="no-internships-found">
-                <div className="text-muted-foreground mb-4">
-                  <Search className="h-12 w-12 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold">No Internships Found</h3>
+              <Card className="p-16 text-center shadow-2xl border-0 bg-white/80 backdrop-blur-sm animate-fade-in-up" data-testid="no-internships-found">
+                <div className="text-gray-500 mb-6">
+                  <Search className="h-16 w-16 mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold">No Internships Found</h3>
                 </div>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-gray-600 mb-8 text-lg">
                   We couldn't find any internships matching your criteria. Try adjusting your filters or search terms.
                 </p>
-                <Button onClick={clearFilters}>
+                <Button 
+                  onClick={clearFilters}
+                  className="px-8 py-3 text-lg bg-[#0066CC] hover:bg-[#0052A3] transition-all duration-300 rounded-xl"
+                >
                   Clear Filters
                 </Button>
               </Card>
             ) : (
-              <div className="space-y-6" data-testid="internships-list">
-                {currentJobs.map((job: Job) => (
-                  <JobCard key={job.id} job={job} />
+              <div 
+                className={`${
+                  viewMode === 'grid' 
+                    ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' 
+                    : 'space-y-4'
+                }`} 
+                data-testid="internships-list"
+              >
+                {currentJobs.map((job: Job, index) => (
+                  <div 
+                    key={job.id} 
+                    className="animate-fade-in-up" 
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <JobCardCompact job={job} viewMode={viewMode} />
+                  </div>
                 ))}
               </div>
             )}
 
             {/* Pagination */}
             {totalPages > 1 && (
-              <div className="flex justify-center items-center space-x-4 mt-12" data-testid="pagination">
+              <div className="flex justify-center items-center space-x-4 mt-16 animate-fade-in-up" data-testid="pagination">
                 <Button
                   variant="outline"
                   onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                   disabled={currentPage === 1}
+                  className="px-6 py-3 h-12 border-2 border-gray-200 hover:border-[#0066CC] hover:bg-[#0066CC]/5 transition-all duration-300 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
                   data-testid="pagination-previous"
                 >
                   Previous
@@ -300,7 +368,11 @@ export default function Internships() {
                       key={page}
                       variant={currentPage === page ? "default" : "outline"}
                       onClick={() => setCurrentPage(page)}
-                      className="w-10 h-10"
+                      className={`w-12 h-12 border-2 transition-all duration-300 rounded-xl ${
+                        currentPage === page 
+                          ? "bg-[#0066CC] hover:bg-[#0052A3] text-white border-[#0066CC]" 
+                          : "border-gray-200 hover:border-[#0066CC] hover:bg-[#0066CC]/5"
+                      }`}
                       data-testid={`pagination-page-${page}`}
                     >
                       {page}
@@ -312,6 +384,7 @@ export default function Internships() {
                   variant="outline"
                   onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                   disabled={currentPage === totalPages}
+                  className="px-6 py-3 h-12 border-2 border-gray-200 hover:border-[#0066CC] hover:bg-[#0066CC]/5 transition-all duration-300 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
                   data-testid="pagination-next"
                 >
                   Next

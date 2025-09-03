@@ -10,6 +10,11 @@ import Internships from "@/pages/internships";
 import JobDetails from "@/pages/job-details";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
+import Login from "@/pages/login";
+import Signup from "@/pages/signup";
+import Privacy from "@/pages/privacy";
+import Terms from "@/pages/terms";
+import Cookies from "@/pages/cookies";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -21,6 +26,11 @@ function Router() {
       <Route path="/jobs/:id" component={JobDetails} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
+      <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
+      <Route path="/privacy" component={Privacy} />
+      <Route path="/terms" component={Terms} />
+      <Route path="/cookies" component={Cookies} />
       <Route component={NotFound} />
     </Switch>
   );

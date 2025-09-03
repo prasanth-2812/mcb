@@ -3,18 +3,28 @@ import { LanguageSwitcher } from "./language-switcher";
 import { useTranslation } from "@/hooks/use-translation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Briefcase } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useState } from "react";
 
 export function Header() {
   const { t } = useTranslation();
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleLoginClick = () => {
+    setLocation('/login');
+    scrollToTop();
+  };
 
   const navItems = [
     { href: "/", label: t("nav.home") },
     { href: "/jobs", label: t("nav.jobs") },
     { href: "/internships", label: t("nav.internships") },
+    { href: "/about", label: t("nav.about") },
     { href: "/contact", label: t("nav.contact") },
   ];
 
@@ -29,11 +39,12 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo and brand */}
-          <Link href="/" className="flex items-center space-x-2" data-testid="logo-link">
-            <div className="text-primary text-2xl font-bold flex items-center">
-              <Briefcase className="h-6 w-6 mr-2" />
-              MCB Consulting
-            </div>
+          <Link href="/" className="flex items-center" data-testid="logo-link">
+            <img 
+              src="/mcb.svg" 
+              alt="MCB Consulting" 
+              className="h-16 w-auto max-w-64"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -59,14 +70,9 @@ export function Header() {
               variant="secondary" 
               className="font-medium"
               data-testid="sign-in-button"
+              onClick={handleLoginClick}
             >
               {t("nav.signIn")}
-            </Button>
-            <Button 
-              className="font-medium"
-              data-testid="post-job-button"
-            >
-              {t("nav.postJob")}
             </Button>
           </div>
 
@@ -106,17 +112,13 @@ export function Header() {
                     <Button 
                       variant="secondary" 
                       className="w-full font-medium"
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        handleLoginClick();
+                      }}
                       data-testid="mobile-sign-in-button"
                     >
                       {t("nav.signIn")}
-                    </Button>
-                    <Button 
-                      className="w-full font-medium"
-                      onClick={() => setMobileMenuOpen(false)}
-                      data-testid="mobile-post-job-button"
-                    >
-                      {t("nav.postJob")}
                     </Button>
                   </div>
                 </div>

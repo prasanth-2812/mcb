@@ -33,5 +33,19 @@ export default defineConfig({
       strict: true,
       deny: ["**/.*"],
     },
+    hmr: {
+      overlay: true,
+      port: 24678,
+    },
+    watch: {
+      usePolling: true,
+      interval: 1000,
+    },
+    headers: {
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+    },
+  },
+  define: {
+    __DEV__: JSON.stringify(process.env.NODE_ENV === 'development'),
   },
 });

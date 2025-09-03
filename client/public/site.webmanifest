@@ -1,0 +1,17 @@
+{
+  "name": "MCB Career Connect",
+  "short_name": "MCB Career",
+  "description": "India's Leading Career Platform - Find Your Perfect Gig",
+  "icons": [
+    {
+      "src": "/mcb.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#0077B5",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}
