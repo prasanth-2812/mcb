@@ -64,12 +64,17 @@ function PartnerLogo({ partner, index }: PartnerLogoProps) {
     setIsLoading(false);
   };
 
+  const handlePartnerClick = () => {
+    window.open(partner.website, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div
       className="flex-shrink-0 group cursor-pointer"
       data-testid={`partner-${index}`}
+      onClick={handlePartnerClick}
     >
-      <div className="flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg">
+      <div className="flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg p-4 rounded-xl hover:bg-white/80">
         {isLoading && (
           <div className="animate-pulse">
             <div className="h-16 w-24 bg-gray-200 rounded"></div>
@@ -103,7 +108,7 @@ export function FeaturedPartners() {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden" id="partners">
+    <section className="py-24 bg-gradient-to-br from-[#0066CC]/5 via-white to-[#0066CC]/5 relative overflow-hidden" id="partners">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(partnersSchema) }}
@@ -117,8 +122,8 @@ export function FeaturedPartners() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-6 animate-fade-in-up">
-            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
+          <div className="inline-flex items-center px-4 py-2 bg-[#0066CC]/10 text-[#0066CC] rounded-full text-sm font-semibold mb-6 animate-fade-in-up border border-[#0066CC]/20">
+            <span className="w-2 h-2 bg-[#0066CC] rounded-full mr-2 animate-pulse"></span>
             Trusted Partners
           </div>
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fade-in-up" data-testid="partners-title" style={{ animationDelay: '0.2s' }}>

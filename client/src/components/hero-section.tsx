@@ -9,9 +9,9 @@ export function HeroSection() {
 
   return (
     <section 
-      className="hero-gradient text-white py-32 relative overflow-hidden" 
+      className="relative text-white py-32 overflow-hidden" 
       id="home"
-      style={{ backgroundColor: 'hsl(200.11deg 100% 35.1%)' }}
+      style={{ backgroundColor: 'hsl(200.55deg 100% 35.49%)' }}
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -40,7 +40,7 @@ export function HeroSection() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-up" data-testid="hero-subtitle" style={{ animationDelay: '0.4s' }}>
+          <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-up" data-testid="hero-subtitle" style={{ animationDelay: '0.4s' }}>
             Flexible work opportunities connecting talented professionals with top companies across India. 
             Your career success is our mission.
           </p>
@@ -58,7 +58,7 @@ export function HeroSection() {
             <Button 
               size="lg"
               variant="outline"
-              className="border-2 border-white text-blue-600 hover:bg-white hover:text-blue-900 px-8 py-4 text-lg font-semibold rounded-full backdrop-blur-sm transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-white/25"
+              className="border-2 border-white text-blue-600 hover:bg-white hover:text-[#0066CC] px-8 py-4 text-lg font-semibold rounded-full backdrop-blur-sm transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-white/25"
               onClick={() => setLocation('/contact')}
             >
               Get Started

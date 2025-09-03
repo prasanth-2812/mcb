@@ -71,7 +71,7 @@ export function JobCategories() {
   }
 
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden" id="categories">
+    <section className="py-24 bg-gradient-to-br from-[#0066CC]/5 via-white to-[#0066CC]/5 relative overflow-hidden" id="categories">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 right-10 w-32 h-32 bg-blue-100/20 rounded-full animate-float"></div>
@@ -82,8 +82,8 @@ export function JobCategories() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-6 animate-fade-in-up">
-            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
+          <div className="inline-flex items-center px-4 py-2 bg-[#0066CC]/10 text-[#0066CC] rounded-full text-sm font-semibold mb-6 animate-fade-in-up border border-[#0066CC]/20">
+            <span className="w-2 h-2 bg-[#0066CC] rounded-full mr-2 animate-pulse"></span>
             Explore Opportunities
           </div>
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fade-in-up" data-testid="categories-title" style={{ animationDelay: '0.2s' }}>
@@ -95,7 +95,7 @@ export function JobCategories() {
         </div>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {categories?.map((category: any, index: number) => {
             const IconComponent = iconMap[category.id] || Briefcase;
             
@@ -114,7 +114,7 @@ export function JobCategories() {
                   <div className="relative z-10 flex flex-col h-full">
                     {/* Icon Container */}
                     <div className="mb-4">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-md">
+                      <div className="w-16 h-16 bg-gradient-to-br from-[#0066CC] to-[#0052A3] rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-md">
                         <IconComponent className="w-8 h-8 text-white" />
                       </div>
                     </div>
@@ -126,8 +126,8 @@ export function JobCategories() {
                       </h3>
                       
                       {/* Job Count Badge */}
-                      <div className="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold mb-3 group-hover:bg-blue-200 transition-colors duration-300">
-                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-1.5"></span>
+                      <div className="inline-flex items-center px-2 py-1 bg-[#0066CC]/10 text-[#0066CC] rounded-full text-xs font-semibold mb-3 group-hover:bg-[#0066CC]/20 transition-colors duration-300 border border-[#0066CC]/20">
+                        <span className="w-1.5 h-1.5 bg-[#0066CC] rounded-full mr-1.5"></span>
                         {category.jobCount.toLocaleString()} {t("categories.jobsAvailable")}
                       </div>
                       
@@ -137,7 +137,7 @@ export function JobCategories() {
                     </div>
 
                     {/* Hover Arrow */}
-                    <div className="flex items-center text-blue-600 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-0 group-hover:translate-x-1 mt-auto">
+                    <div className="flex items-center text-[#0066CC] opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-0 group-hover:translate-x-1 mt-auto">
                       <span className="text-xs font-semibold">Explore Jobs</span>
                       <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -152,14 +152,14 @@ export function JobCategories() {
 
         {/* CTA Section */}
         <div className="text-center mt-20 animate-fade-in-up" style={{ animationDelay: '1.2s' }}>
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-8 text-white shadow-2xl">
+          <div className="bg-gradient-to-r from-[#0066CC] to-[#0052A3] rounded-3xl p-8 text-white shadow-2xl">
             <h3 className="text-2xl font-bold mb-4">Ready to Find Your Perfect Job?</h3>
-            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+            <p className="text-white/90 mb-6 max-w-2xl mx-auto">
               Discover thousands of opportunities across all categories and take the next step in your career
             </p>
             <Button 
               size="lg"
-              className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="bg-white text-[#0066CC] hover:bg-gray-50 px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
               onClick={() => setLocation("/jobs")}
               data-testid="view-all-categories"
             >

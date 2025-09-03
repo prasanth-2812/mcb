@@ -186,12 +186,12 @@ export function ContactForm() {
             name="experienceLevel"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="form-label">
+                <FormLabel className="text-sm font-medium text-gray-700">
                   {t("contact.form.experienceLevel")}
                 </FormLabel>
                 <FormControl>
                   <Select onValueChange={field.onChange} value={field.value || ""}>
-                    <SelectTrigger className="form-input" data-testid="contact-experience">
+                    <SelectTrigger className="h-12 border-2 border-gray-200 focus:border-[#0066CC] focus:ring-[#0066CC]/20 transition-all duration-300 rounded-xl" data-testid="contact-experience">
                       <SelectValue placeholder="Select Experience Level" />
                     </SelectTrigger>
                     <SelectContent>
@@ -213,12 +213,12 @@ export function ContactForm() {
             name="preferredLanguage"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="form-label">
+                <FormLabel className="text-sm font-medium text-gray-700">
                   {t("contact.form.preferredLanguage")}
                 </FormLabel>
                 <FormControl>
                   <Select onValueChange={field.onChange} value={field.value || ""}>
-                    <SelectTrigger className="form-input" data-testid="contact-language">
+                    <SelectTrigger className="h-12 border-2 border-gray-200 focus:border-[#0066CC] focus:ring-[#0066CC]/20 transition-all duration-300 rounded-xl" data-testid="contact-language">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -235,7 +235,7 @@ export function ContactForm() {
           />
           
           <div>
-            <FormLabel className="form-label mb-3 block">
+            <FormLabel className="text-sm font-medium text-gray-700 mb-3 block">
               {t("contact.form.serviceInterest")}
             </FormLabel>
             <div className="space-y-3" data-testid="contact-services">
@@ -251,7 +251,7 @@ export function ContactForm() {
                   />
                   <label 
                     htmlFor={service.id} 
-                    className="text-sm text-foreground cursor-pointer"
+                    className="text-sm text-gray-700 cursor-pointer"
                   >
                     {service.label}
                   </label>
@@ -265,7 +265,7 @@ export function ContactForm() {
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="form-label">
+                <FormLabel className="text-sm font-medium text-gray-700">
                   {t("contact.form.message")}
                 </FormLabel>
                 <FormControl>
@@ -273,7 +273,7 @@ export function ContactForm() {
                     rows={4}
                     placeholder={t("contact.form.messagePlaceholder")}
                     {...field} 
-                    className="form-input"
+                    className="border-2 border-gray-200 focus:border-[#0066CC] focus:ring-[#0066CC]/20 transition-all duration-300 rounded-xl"
                     data-testid="contact-message"
                   />
                 </FormControl>
@@ -285,10 +285,10 @@ export function ContactForm() {
           <Button 
             type="submit" 
             disabled={contactMutation.isPending}
-            className="w-full btn-primary flex items-center justify-center space-x-2"
+            className="w-full h-12 bg-gradient-to-r from-[#0066CC] to-[#0052A3] hover:from-[#0052A3] hover:to-[#003D7A] text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2"
             data-testid="contact-submit"
           >
-            <Send className="h-4 w-4" />
+            <Send className="h-5 w-5" />
             <span>
               {contactMutation.isPending ? "Sending..." : t("contact.sendButton")}
             </span>

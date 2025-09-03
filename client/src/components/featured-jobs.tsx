@@ -29,7 +29,7 @@ export function FeaturedJobs() {
   }
 
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden" id="featured-jobs">
+    <section className="py-24 bg-gradient-to-br from-[#0066CC]/5 via-white to-[#0066CC]/5 relative overflow-hidden" id="featured-jobs">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 right-10 w-32 h-32 bg-blue-100/20 rounded-full animate-float"></div>
@@ -40,8 +40,8 @@ export function FeaturedJobs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-6 animate-fade-in-up">
-            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
+          <div className="inline-flex items-center px-4 py-2 bg-[#0066CC]/10 text-[#0066CC] rounded-full text-sm font-semibold mb-6 animate-fade-in-up border border-[#0066CC]/20">
+            <span className="w-2 h-2 bg-[#0066CC] rounded-full mr-2 animate-pulse"></span>
             Featured Opportunities
           </div>
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fade-in-up" data-testid="featured-jobs-title" style={{ animationDelay: '0.2s' }}>
@@ -53,7 +53,7 @@ export function FeaturedJobs() {
         </div>
 
         {/* Jobs Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-testid="featured-jobs-grid">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" data-testid="featured-jobs-grid">
           {jobs?.map((job: Job, index: number) => (
             <div key={job.id} className="animate-fade-in-up" style={{ animationDelay: `${0.6 + index * 0.1}s` }}>
               <JobCard job={job} />
@@ -63,14 +63,17 @@ export function FeaturedJobs() {
 
         {/* CTA Section */}
         <div className="text-center mt-20 animate-fade-in-up" style={{ animationDelay: '1.2s' }}>
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-8 text-white shadow-2xl">
+          <div className="bg-gradient-to-r from-[#0066CC] to-[#0052A3] rounded-3xl p-8 text-white shadow-2xl">
             <h3 className="text-2xl font-bold mb-4">Ready to Apply for Your Dream Job?</h3>
-            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+            <p className="text-white/90 mb-6 max-w-2xl mx-auto">
               Explore thousands of opportunities and take the next step in your career journey
             </p>
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+            <a
+              href="/jobs"
+              className="bg-white text-[#0066CC] px-8 py-3 rounded-full font-semibold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 inline-block"
+            >
               View All Jobs
-            </button>
+            </a>
           </div>
         </div>
       </div>

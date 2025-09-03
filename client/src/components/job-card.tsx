@@ -35,7 +35,7 @@ export function JobCard({ job }: JobCardProps) {
 
   return (
     <div
-      className="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 relative overflow-hidden cursor-pointer h-full flex flex-col hover:border-blue-200"
+      className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 border border-gray-100 relative overflow-hidden cursor-pointer h-full flex flex-col hover:border-[#0066CC]/20"
       onClick={handleCardClick}
       data-testid={`job-card-${job.id}`}
     >
@@ -44,28 +44,28 @@ export function JobCard({ job }: JobCardProps) {
       
       <div className="relative z-10 flex flex-col h-full">
         {/* Header */}
-        <div className="flex items-start justify-between mb-6">
-          <div className="flex items-center space-x-4">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg group-hover:shadow-blue-500/25">
-              <Building2 className="h-8 w-8 text-white" />
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex items-center space-x-3">
+            <div className="w-12 h-12 bg-gradient-to-br from-[#0066CC] to-[#0052A3] rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-md group-hover:shadow-[#0066CC]/25">
+              <Building2 className="h-6 w-6 text-white" />
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300" data-testid={`job-title-${job.id}`}>
+              <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-[#0066CC] transition-colors duration-300" data-testid={`job-title-${job.id}`}>
                 {job.title}
               </h3>
-              <p className="text-gray-600 font-semibold text-base" data-testid={`job-company-${job.id}`}>
+              <p className="text-gray-600 font-semibold text-sm" data-testid={`job-company-${job.id}`}>
                 {job.company}
               </p>
             </div>
           </div>
           <div className="text-right">
             {job.salary && (
-              <div className="text-lg font-bold text-blue-600 mb-2" data-testid={`job-salary-${job.id}`}>
+              <div className="text-base font-bold text-[#0066CC] mb-1" data-testid={`job-salary-${job.id}`}>
                 {job.salary}
               </div>
             )}
             {daysAgo && (
-              <div className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full" data-testid={`job-posted-${job.id}`}>
+              <div className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full" data-testid={`job-posted-${job.id}`}>
                 {daysAgo} days ago
               </div>
             )}
@@ -73,25 +73,25 @@ export function JobCard({ job }: JobCardProps) {
         </div>
 
         {/* Description */}
-        <div className="mb-6 flex-1">
-          <p className="text-gray-600 leading-relaxed line-clamp-3 text-base" data-testid={`job-description-${job.id}`}>
+        <div className="mb-4 flex-1">
+          <p className="text-gray-600 leading-relaxed line-clamp-3 text-sm" data-testid={`job-description-${job.id}`}>
             {job.description}
           </p>
         </div>
 
         {/* Job Details */}
-        <div className="mb-6">
-          <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-            <span className="flex items-center bg-blue-50 px-3 py-2 rounded-xl" data-testid={`job-location-${job.id}`}>
-              <MapPin className="h-4 w-4 mr-2 text-blue-600" />
+        <div className="mb-4">
+          <div className="flex flex-wrap gap-3 text-xs text-gray-600">
+            <span className="flex items-center bg-[#0066CC]/10 px-2 py-1.5 rounded-lg border border-[#0066CC]/20" data-testid={`job-location-${job.id}`}>
+              <MapPin className="h-3 w-3 mr-1.5 text-[#0066CC]" />
               {job.location}
             </span>
-            <span className="flex items-center bg-green-50 px-3 py-2 rounded-xl" data-testid={`job-type-${job.id}`}>
-              <Clock className="h-4 w-4 mr-2 text-green-600" />
+            <span className="flex items-center bg-green-50 px-2 py-1.5 rounded-lg border border-green-200" data-testid={`job-type-${job.id}`}>
+              <Clock className="h-3 w-3 mr-2 text-green-600" />
               {job.type}
             </span>
-            <span className="flex items-center bg-purple-50 px-3 py-2 rounded-xl" data-testid={`job-experience-${job.id}`}>
-              <User className="h-4 w-4 mr-2 text-purple-600" />
+            <span className="flex items-center bg-purple-50 px-2 py-1.5 rounded-lg border border-purple-200" data-testid={`job-experience-${job.id}`}>
+              <User className="h-3 w-3 mr-2 text-purple-600" />
               {job.experience}
             </span>
           </div>
@@ -99,20 +99,20 @@ export function JobCard({ job }: JobCardProps) {
 
         {/* Skills */}
         {job.skills && job.skills.length > 0 && (
-          <div className="mb-6">
+          <div className="mb-4">
             <div className="flex flex-wrap gap-2" data-testid={`job-skills-${job.id}`}>
               {job.skills.slice(0, 3).map((skill, index) => (
                 <Badge 
                   key={index} 
                   variant="secondary" 
-                  className="text-sm bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors duration-300 px-3 py-2 rounded-xl"
+                  className="text-xs bg-[#0066CC]/10 text-[#0066CC] hover:bg-[#0066CC]/20 transition-colors duration-300 px-2 py-1 rounded-lg border border-[#0066CC]/20"
                   data-testid={`job-skill-${job.id}-${index}`}
                 >
                   {skill}
                 </Badge>
               ))}
               {job.skills.length > 3 && (
-                <Badge variant="secondary" className="text-sm bg-gray-100 text-gray-600 px-3 py-2 rounded-xl">
+                <Badge variant="secondary" className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-lg border border-gray-200">
                   +{job.skills.length - 3} more
                 </Badge>
               )}
@@ -123,7 +123,7 @@ export function JobCard({ job }: JobCardProps) {
         {/* Apply Button */}
         <div className="mt-auto">
           <Button 
-            className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 rounded-2xl transition-all duration-500 shadow-lg hover:shadow-xl transform hover:scale-105 text-lg"
+            className="w-full bg-gradient-to-r from-[#0066CC] to-[#0052A3] hover:from-[#0077DD] hover:to-[#0066CC] text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 text-base"
             onClick={handleApplyClick}
             data-testid={`job-apply-${job.id}`}
           >

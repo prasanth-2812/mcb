@@ -56,7 +56,7 @@ export function Footer() {
                 size="icon"
                 className="text-gray-400 hover:text-primary transition-colors"
                 data-testid="social-linkedin"
-                onClick={() => handleSocialClick('https://linkedin.com/company/mcb-consulting')}
+                onClick={() => handleSocialClick('/contact')}
               >
                 <Linkedin className="h-5 w-5" />
               </Button>
@@ -74,7 +74,7 @@ export function Footer() {
                 size="icon"
                 className="text-gray-400 hover:text-primary transition-colors"
                 data-testid="social-facebook"
-                onClick={() => handleSocialClick('https://facebook.com/mcbconsulting')}
+                onClick={() => handleSocialClick('/contact')}
               >
                 <Facebook className="h-5 w-5" />
               </Button>
@@ -83,7 +83,7 @@ export function Footer() {
                 size="icon"
                 className="text-gray-400 hover:text-primary transition-colors"
                 data-testid="social-instagram"
-                onClick={() => handleSocialClick('https://instagram.com/mcbconsulting')}
+                onClick={() => handleSocialClick('/contact')}
               >
                 <Instagram className="h-5 w-5" />
               </Button>
@@ -225,7 +225,7 @@ export function Footer() {
                 </button>
                 <p className="flex items-center">
                   <MapPin className="h-4 w-4 mr-2" />
-                  Mumbai, Maharashtra
+                  Visakhapatnam, Andhra Pradesh
                 </p>
               </div>
             </div>

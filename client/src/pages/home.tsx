@@ -20,8 +20,8 @@ export default function Home() {
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "IN",
-      "addressLocality": "Mumbai",
-      "addressRegion": "Maharashtra"
+      "addressLocality": "Visakhapatnam",
+      "addressRegion": "Andhra Pradesh"
     },
     "contactPoint": {
       "@type": "ContactPoint",
