@@ -65,7 +65,7 @@ export function Footer() {
                 size="icon"
                 className="text-gray-400 hover:text-primary transition-colors"
                 data-testid="social-twitter"
-                onClick={() => handleSocialClick('https://twitter.com/mcbconsulting')}
+                onClick={() => handleSocialClick('/contact')}
               >
                 <Twitter className="h-5 w-5" />
               </Button>

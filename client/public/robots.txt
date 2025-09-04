@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://mcbcareerconnect.com/sitemap.xml
+Sitemap: https://mcbcareerconnect.com/job-sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Allow job pages
+Allow: /jobs/
+Allow: /internships/
+Allow: /about
+Allow: /contact
